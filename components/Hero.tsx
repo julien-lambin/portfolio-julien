@@ -13,12 +13,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         
         {/* Avatar Mobile Only (visible on small screens) */}
         <div className="md:hidden w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mb-8 shadow-xl flex items-center justify-center text-white text-3xl font-bold">
-            JD
+            JL
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 pb-2">
-            Jean Dupont
+            Julien Lambin
           </span>
         </h1>
 
