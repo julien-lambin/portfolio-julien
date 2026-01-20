@@ -3,14 +3,38 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Footer } from './Footer';
 
 export const Contact: React.FC = () => {
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('submitting');
-    setTimeout(() => {
-      setStatus('success');
-    }, 1500);
+    setErrorMessage('');
+
+    const formData = new FormData(e.currentTarget);
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+    formData.append("access_key", accessKey);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        e.currentTarget.reset();
+      } else {
+        setStatus('error');
+        setErrorMessage(data.message || "Une erreur est survenue lors de l'envoi.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus('error');
+      setErrorMessage("Impossible de contacter le serveur. Veuillez réessayer plus tard.");
+    }
   };
 
   return (
@@ -39,17 +63,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                         <h4 className="font-semibold text-slate-900 dark:text-white">Email</h4>
-                        <a href="mailto:contact@jeandupont.dev" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">contact@jeandupont.dev</a>
-                    </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                     <div className="p-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg">
-                        <Phone size={20} />
-                    </div>
-                    <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white">Téléphone</h4>
-                        <p className="text-slate-500 dark:text-slate-400">+33 6 12 34 56 78</p>
+                        <a href="mailto:julienldev@gmail.com" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">julienldev@gmail.com</a>
                     </div>
                 </div>
 
@@ -59,7 +73,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                         <h4 className="font-semibold text-slate-900 dark:text-white">Localisation</h4>
-                        <p className="text-slate-500 dark:text-slate-400">Bordeaux, France</p>
+                        <p className="text-slate-500 dark:text-slate-400">Pas-de-Calais, France</p>
                     </div>
                 </div>
             </div>
@@ -83,23 +97,28 @@ export const Contact: React.FC = () => {
                 </div>
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                    {status === 'error' && (
+                        <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-lg text-red-600 dark:text-red-400 text-sm">
+                            {errorMessage}
+                        </div>
+                    )}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Nom</label>
-                            <input type="text" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="Votre nom" />
+                            <input name="name" type="text" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="Votre nom" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
-                            <input type="email" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="votre@email.com" />
+                            <input name="email" type="email" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="votre@email.com" />
                         </div>
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Sujet</label>
-                        <input type="text" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="Proposition de projet..." />
+                        <input name="subject" type="text" required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all" placeholder="Proposition de projet..." />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
-                        <textarea rows={4} required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all resize-none" placeholder="Bonjour, je souhaiterais..."></textarea>
+                        <textarea name="message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all resize-none" placeholder="Bonjour, je souhaiterais..."></textarea>
                     </div>
                     <button 
                         type="submit" 
