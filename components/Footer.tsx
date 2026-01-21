@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
         
         <div className="text-center md:text-left">
           <h4 className="font-bold text-slate-900 dark:text-white text-lg mb-1">Julien Lambin</h4>
-          <p className="text-slate-500 dark:text-slate-400 text-sm">Développeur Full Stack & Créateur Digital</p>
+          <p className="text-slate-500 dark:text-slate-400 text-sm">Créateur de sites web & Accompagnement digital</p>
         </div>
 
         <div className="flex items-center gap-4">

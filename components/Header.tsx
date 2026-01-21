@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SectionId } from '../types';
+import { motion } from 'framer-motion';
 import { User, Code2, FileText, Briefcase, Mail, Moon, Sun } from 'lucide-react';
 
 interface HeaderProps {
@@ -22,22 +23,54 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
   const navItems = [
     { id: 'home', label: 'À propos', icon: User },
     { id: 'projects', label: 'Projets', icon: Briefcase },
-    { id: 'resume', label: 'CV', icon: FileText },
+    { id: 'resume', label: 'Services', icon: FileText },
     { id: 'skills', label: 'Compétences', icon: Code2 },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <header 
+    <motion.header 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm dark:shadow-slate-900/50 py-3' 
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-7xl mx-auto px-6 flex items-center justify-between"
+      >
         
         {/* Left: Profile / Name */}
-        <div 
+        <motion.div 
+          variants={itemVariants}
           onClick={() => onNavigate('home')}
           className="flex items-center gap-3 cursor-pointer group"
         >
@@ -47,10 +80,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
           <span className="font-bold text-slate-800 dark:text-slate-100 text-lg hidden sm:block group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             Julien Lambin
           </span>
-        </div>
+        </motion.div>
 
         {/* Center: Navigation */}
-        <nav className="hidden md:flex items-center bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm px-2 py-1.5 rounded-full border border-slate-100 dark:border-slate-800 shadow-sm">
+        <motion.nav 
+          variants={itemVariants}
+          className="hidden md:flex items-center bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm px-2 py-1.5 rounded-full border border-slate-100 dark:border-slate-800 shadow-sm"
+        >
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -61,10 +97,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
               {item.label}
             </button>
           ))}
-        </nav>
+        </motion.nav>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-3">
+        <motion.div 
+          variants={itemVariants}
+          className="flex items-center gap-3"
+        >
           <button 
             onClick={toggleTheme}
             className="p-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full transition-colors" 
@@ -79,8 +118,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
             <Mail size={16} />
             <span className="hidden sm:inline">Me Contacter</span>
           </button>
-        </div>
-      </div>
-    </header>
+        </motion.div>
+      </motion.div>
+    </motion.header>
   );
 };

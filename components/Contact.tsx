@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Footer } from './Footer';
 
 export const Contact: React.FC = () => {
@@ -13,19 +14,27 @@ export const Contact: React.FC = () => {
 
     const formData = new FormData(e.currentTarget);
     const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
-    formData.append("access_key", accessKey);
+    
+    // Convert FormData to a plain object for JSON submission
+    const object = Object.fromEntries(formData);
+    object.access_key = accessKey;
+    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: json
       });
 
       const data = await response.json();
 
       if (data.success) {
         setStatus('success');
-        e.currentTarget.reset();
+        (e.target as HTMLFormElement).reset();
       } else {
         setStatus('error');
         setErrorMessage(data.message || "Une erreur est survenue lors de l'envoi.");
@@ -33,26 +42,38 @@ export const Contact: React.FC = () => {
     } catch (error) {
       console.error("Form submission error:", error);
       setStatus('error');
-      setErrorMessage("Impossible de contacter le serveur. Veuillez réessayer plus tard.");
+      setErrorMessage("Erreur réseau ou problème de communication avec le serveur.");
     }
   };
 
   return (
     <section id="contact" className="pt-24 pb-0 relative">
       <div className="max-w-7xl mx-auto px-6 mb-24">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Connectons-nous</h2>
-            <p className="text-slate-500 dark:text-slate-400">Prêt à donner vie à vos idées ? N'hésitez pas à me contacter.</p>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Parlons de votre projet</h2>
+            <p className="text-slate-500 dark:text-slate-400">Une idée ? Un besoin ? Envoyez-moi un message pour en discuter gratuitement.</p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-800">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid grid-cols-1 lg:grid-cols-5 gap-12 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-3xl p-8 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 border border-slate-100 dark:border-slate-800"
+        >
           
           {/* Left: Contact Info */}
           <div className="lg:col-span-2 space-y-8">
             <div className="space-y-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Coordonnées</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Mes coordonnées</h3>
                 <p className="text-slate-500 dark:text-slate-400 leading-relaxed">
-                    Je suis actuellement disponible pour des missions freelance et des opportunités CDI.
+                    Basé dans le Pas-de-Calais, j'accompagne des entreprises partout en France.
                 </p>
             </div>
 
@@ -134,7 +155,7 @@ export const Contact: React.FC = () => {
                 </form>
             )}
           </div>
-        </div>
+        </motion.div>
       </div>
       <Footer />
     </section>

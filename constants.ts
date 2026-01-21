@@ -22,42 +22,42 @@ export const PROJECTS: Project[] = [
   {
     id: 'chercheur-immo',
     title: 'Chercheur Immo',
-    category: 'WordPress',
-    description: 'Une plateforme immobilière optimisée pour la conversion client.',
-    fullDescription: 'Développement complet d’un site vitrine pour une agence immobilière indépendante. L’accent a été mis sur la vitesse de chargement et l’optimisation du parcours utilisateur pour maximiser la prise de rendez-vous. Intégration d’API de cartographie et système de filtrage avancé en PHP.',
-    image: 'https://picsum.photos/id/1031/800/600',
-    tags: ['WordPress', 'PHP', 'Mapbox API'],
+    category: 'Immobilier',
+    description: 'Site de recherche immobilière simplifié pour les particuliers.',
+    fullDescription: 'Création complète d’un site de recherche d’annonces. L’objectif était de rendre la recherche simple et rapide pour les clients, avec un système de prise de rendez-vous automatique pour gagner du temps.',
+    image: '/assets/img/lp-chercheur-immo.webp',
+    tags: ['Site Web', 'Gestion Client', 'Carte Interactive'],
     demoUrl: '#',
     featured: true
   },
   {
     id: 'help-my-setup',
     title: 'Help My Setup',
-    category: 'React',
-    description: 'Interface sombre générant des configurations de bureau via IA.',
-    fullDescription: 'Application web interactive permettant aux utilisateurs de générer leur setup idéal. Design "Dark Mode" immersif avec une interface fluide développée en React. Le backend PHP gère les requêtes vers l\'API d\'intelligence artificielle pour recommander les produits.',
-    image: 'https://picsum.photos/id/3/800/600',
-    tags: ['React', 'OpenAI API', 'Tailwind'],
+    category: 'E-commerce',
+    description: 'Configurateur intelligent pour créer son espace de travail idéal.',
+    fullDescription: 'Un outil interactif qui aide les utilisateurs à choisir le meilleur matériel pour leur bureau. Le site guide les clients pas à pas pour créer une configuration qui leur ressemble.',
+    image: '/assets/img/lp-hms.webp',
+    tags: ['Outil Interactif', 'IA', 'Design Moderne'],
     demoUrl: '#'
   },
   {
     id: 'scolarsuite',
     title: 'ScolarSuite',
-    category: 'Electron',
-    description: 'Application Electron pour la gestion de classe hors-ligne.',
-    fullDescription: 'Logiciel de bureau cross-platform conçu pour les enseignants. Permet la gestion des notes, des absences et des bulletins sans connexion internet permanente. Synchronisation cloud facultative via une API REST sécurisée.',
-    image: 'https://picsum.photos/id/20/800/600',
-    tags: ['Electron', 'Node.js', 'SQLite'],
+    category: 'Logiciel Métier',
+    description: 'Logiciel simplifié pour la gestion des commandes de photos scolaires.',
+    fullDescription: 'Une solution complète pour aider les photographes à gérer leurs commandes sans stress. Tout est automatisé pour éviter les erreurs et gagner des heures de travail.',
+    image: '/assets/img/lp-ScolarSuite.webp',
+    tags: ['Logiciel', 'Gestion', 'Productivité'],
     demoUrl: '#'
   },
   {
     id: 'api-dashboard',
     title: 'API Dashboard',
-    category: 'Backend',
-    description: 'Tableau de bord de monitoring API en temps réel.',
-    fullDescription: 'Un dashboard complet pour visualiser les métriques de performance des API. Construit avec Symfony et Chart.js.',
+    category: 'Outil Interne',
+    description: 'Tableau de bord de suivi pour vos outils digitaux.',
+    fullDescription: 'Un centre de contrôle simple pour garder un œil sur le bon fonctionnement de vos services et outils connectés.',
     image: 'https://picsum.photos/id/48/800/600',
-    tags: ['Symfony', 'Chart.js', 'MySQL'],
+    tags: ['Tableau de bord', 'Suivi', 'Outil'],
     demoUrl: '#'
   }
 ];
@@ -65,26 +65,26 @@ export const PROJECTS: Project[] = [
 export const SERVICES: Service[] = [
   {
     id: 'dev',
-    title: 'Développement Sur-Mesure',
-    description: 'Sites vitrines performants ou applications métiers complexes en PHP/Symfony ou WordPress.',
+    title: 'Création de Site Web',
+    description: 'Des sites vitrines modernes ou des boutiques en ligne pour présenter votre activité et vendre vos services.',
     icon: 'code'
   },
   {
     id: 'seo',
-    title: 'SEO & Visibilité',
-    description: 'Optimisation technique et sémantique pour placer votre activité en tête des résultats.',
+    title: 'Visibilité Google',
+    description: 'Soyez présent là où vos clients vous cherchent. J\'optimise votre placement pour attirer plus de visiteurs qualifiés.',
     icon: 'search'
   },
   {
     id: 'maintenance',
-    title: 'Maintenance & Sécurité',
-    description: 'Mises à jour régulières, sauvegardes et protection contre les attaques.',
+    title: 'Suivi & Sécurité',
+    description: 'Je veille sur votre site au quotidien : mises à jour, sauvegardes et dépannage rapide en cas de besoin.',
     icon: 'shield'
   },
   {
     id: 'branding',
     title: 'Identité Visuelle',
-    description: 'Création de logo et charte graphique minimaliste pour une image de marque cohérente.',
+    description: 'Création de votre logo et d\'une charte graphique qui vous ressemble pour une image pro et rassurante.',
     icon: 'pen'
   }
 ];
