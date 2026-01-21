@@ -3,7 +3,7 @@ import { SectionId } from '../types';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, MousePointer2 } from 'lucide-react';
 
-import logo from '../assets/img/LOGOv3.webp';
+const logo = '/assets/img/LOGOv3.webp';
 
 interface HeroProps {
   onNavigate: (section: SectionId) => void;

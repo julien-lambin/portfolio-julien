@@ -3,7 +3,7 @@ import { SectionId } from '../types';
 import { motion } from 'framer-motion';
 import { User, Code2, FileText, Briefcase, Mail, Moon, Sun } from 'lucide-react';
 
-import logo from '../assets/img/logo_simplev3.webp';
+const logo = '/assets/img/logo_simplev3.webp';
 
 interface HeaderProps {
   onNavigate: (section: SectionId) => void;
