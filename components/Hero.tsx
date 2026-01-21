@@ -3,6 +3,8 @@ import { SectionId } from '../types';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, MousePointer2 } from 'lucide-react';
 
+import logo from '../assets/img/LOGOv3.webp';
+
 interface HeroProps {
   onNavigate: (section: SectionId) => void;
 }
@@ -42,9 +44,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         {/* Avatar Mobile Only (visible on small screens) */}
         <motion.div 
           variants={itemVariants}
-          className="md:hidden w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 mb-8 shadow-xl flex items-center justify-center text-white text-3xl font-bold"
+          className="md:hidden w-24 h-24 rounded-full overflow-hidden mb-8 shadow-xl flex items-center justify-center bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800"
         >
-            JL
+            <img src={logo} alt="Julien Lambin" className="w-full h-full object-contain" />
         </motion.div>
 
         <motion.h1 

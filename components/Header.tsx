@@ -3,6 +3,8 @@ import { SectionId } from '../types';
 import { motion } from 'framer-motion';
 import { User, Code2, FileText, Briefcase, Mail, Moon, Sun } from 'lucide-react';
 
+import logo from '../assets/img/logo_simplev3.webp';
+
 interface HeaderProps {
   onNavigate: (section: SectionId) => void;
   theme: 'light' | 'dark';
@@ -74,9 +76,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
           onClick={() => onNavigate('home')}
           className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-105 transition-transform">
-            JL
-          </div>
+          <img 
+            src={logo} 
+            alt="Julien Lambin Logo"
+            className="w-8 h-8 object-contain"
+          />
           <span className="font-bold text-slate-800 dark:text-slate-100 text-lg hidden sm:block group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             Julien Lambin
           </span>
