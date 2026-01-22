@@ -50,6 +50,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
             {/* Close Button */}
             <button 
               onClick={onClose}
+              aria-label="Fermer la fenêtre"
               className="absolute top-4 right-4 z-10 p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
             >
               <X size={20} className="text-slate-600 dark:text-slate-300" />

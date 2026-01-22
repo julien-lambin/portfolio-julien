@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Footer } from './Footer';
 
 export const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -157,7 +156,6 @@ export const Contact: React.FC = () => {
           </div>
         </motion.div>
       </div>
-      <Footer />
     </section>
   );
 };

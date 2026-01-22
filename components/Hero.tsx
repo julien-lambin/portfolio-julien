@@ -46,14 +46,23 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           variants={itemVariants}
           className="md:hidden w-24 h-24 rounded-full overflow-hidden mb-8 shadow-xl flex items-center justify-center bg-white dark:bg-slate-900 border-4 border-white dark:border-slate-800"
         >
-            <img src={logo} alt="Julien Lambin" className="w-full h-full object-contain" />
+            <img 
+              src={logo} 
+              alt="Julien Lambin" 
+              width="96"
+              height="96"
+              className="w-full h-full object-contain" 
+            />
         </motion.div>
 
         <motion.h1 
           variants={itemVariants}
           className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
         >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 pb-2">
+          <span 
+            className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 pb-2"
+            {...({ fetchpriority: "high" } as any)}
+          >
             Julien Lambin
           </span>
         </motion.h1>
@@ -86,10 +95,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </button>
           
           <div className="flex items-center gap-3">
-            <a href="#" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm">
+            <a 
+              href="#" 
+              aria-label="Voir mon profil GitHub"
+              className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm"
+            >
                 <Github size={20} />
             </a>
-            <a href="#" className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm">
+            <a 
+              href="#" 
+              aria-label="Me contacter sur LinkedIn"
+              className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm"
+            >
                 <Linkedin size={20} />
             </a>
           </div>

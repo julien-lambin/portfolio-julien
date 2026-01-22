@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Background } from './components/ui/Background';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { Skills } from './components/Skills';
 import { StrategicAccompaniment } from './components/StrategicAccompaniment';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { SectionId } from './types';
+import { LegalModal } from './components/ui/LegalModal';
 
 const App: React.FC = () => {
   // Gestion du thème
@@ -18,6 +20,8 @@ const App: React.FC = () => {
     }
     return 'light';
   });
+
+  const [isLegalOpen, setIsLegalOpen] = useState(false);
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -53,7 +57,10 @@ const App: React.FC = () => {
           <Skills />
           <Contact />
         </main>
+        <Footer onLegalClick={() => setIsLegalOpen(true)} />
       </div>
+
+      <LegalModal isOpen={isLegalOpen} onClose={() => setIsLegalOpen(false)} />
     </div>
   );
 };

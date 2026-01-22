@@ -126,6 +126,9 @@ export const Projects: React.FC = () => {
                           <img 
                               src={project.image} 
                               alt={project.title}
+                              width="400"
+                              height="300"
+                              loading="lazy"
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors"></div>
@@ -158,10 +161,18 @@ export const Projects: React.FC = () => {
                               >
                                   Détails
                               </button>
-                              <a href={project.demoUrl} className="p-2 text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors">
+                              <a 
+                                href={project.demoUrl} 
+                                aria-label={`Voir la démo du projet ${project.title}`}
+                                className="p-2 text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors"
+                              >
                                   <ArrowUpRight size={18} />
                               </a>
-                              <a href="#" className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                              <a 
+                                href="#" 
+                                aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
+                                className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                              >
                                   <Github size={18} />
                               </a>
                           </div>

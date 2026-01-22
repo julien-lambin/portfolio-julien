@@ -79,6 +79,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
           <img 
             src={logo} 
             alt="Julien Lambin Logo"
+            width="32"
+            height="32"
             className="w-8 h-8 object-contain"
           />
           <span className="font-bold text-slate-800 dark:text-slate-100 text-lg hidden sm:block group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -112,6 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
             onClick={toggleTheme}
             className="p-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full transition-colors" 
             title={theme === 'dark' ? "Passer en mode clair" : "Passer en mode sombre"}
+            aria-label={theme === 'dark' ? "Passer en mode clair" : "Passer en mode sombre"}
           >
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
