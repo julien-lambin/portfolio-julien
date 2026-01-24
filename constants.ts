@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'help-my-setup',
     title: 'Help My Setup',
-    category: 'E-commerce',
+    category: 'Configurateur IA',
     description: 'Configurateur intelligent pour créer son espace de travail idéal.',
     fullDescription: 'Un outil interactif qui aide les utilisateurs à choisir le meilleur matériel pour leur bureau. Le site guide les clients pas à pas pour créer une configuration qui leur ressemble.',
     image: '/assets/img/lp-hms.webp',
@@ -51,13 +51,13 @@ export const PROJECTS: Project[] = [
     demoUrl: '#'
   },
   {
-    id: 'api-dashboard',
-    title: 'API Dashboard',
-    category: 'Outil Interne',
-    description: 'Tableau de bord de suivi pour vos outils digitaux.',
-    fullDescription: 'Un centre de contrôle simple pour garder un œil sur le bon fonctionnement de vos services et outils connectés.',
-    image: 'https://picsum.photos/id/48/800/600',
-    tags: ['Tableau de bord', 'Suivi', 'Outil'],
+    id: 'champignon',
+    title: 'Champignon',
+    category: 'E-commerce',
+    description: 'Une boutique en ligne élégante pour des lampes artisanales.',
+    fullDescription: 'Développement d’un site e-commerce complet sous WooCommerce. Une interface travaillée pour mettre en valeur des produits artisanaux uniques, avec un parcours d’achat fluide et sécurisé.',
+    image: '/assets/img/lp-champignon.webp',
+    tags: ['WooCommerce', 'WordPress', 'Design'],
     demoUrl: '#'
   }
 ];
