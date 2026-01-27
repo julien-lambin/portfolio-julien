@@ -59,6 +59,16 @@ export const PROJECTS: Project[] = [
     image: '/assets/img/lp-champignon.webp',
     tags: ['WooCommerce', 'WordPress', 'Design'],
     demoUrl: '#'
+  },
+  {
+    id: 'yt-marker',
+    title: 'YT Marker',
+    category: 'Extension Chrome',
+    description: 'Une extension pour marquer et retrouver facilement des moments clés dans vos vidéos YouTube.',
+    fullDescription: 'Développement d\'une extension Chrome permettant aux utilisateurs de poser des marqueurs temporels personnalisés sur les vidéos YouTube. L\'outil facilite la prise de notes et la navigation rapide vers les segments importants.',
+    image: '/assets/img/lp-yt-marker.webp',
+    tags: ['JavaScript', 'Browser Extension', 'Productivité'],
+    demoUrl: '#'
   }
 ];
 

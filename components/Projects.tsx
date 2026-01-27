@@ -8,6 +8,7 @@ import { ArrowUpRight, Github } from 'lucide-react';
 export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState('Tous');
+  const [displayLimit, setDisplayLimit] = useState(4);
 
   const categories = ['Tous', ...Array.from(new Set(PROJECTS.map(p => p.category)))];
   
@@ -65,7 +66,10 @@ export const Projects: React.FC = () => {
             {categories.map(cat => (
                 <button
                     key={cat}
-                    onClick={() => setFilter(cat)}
+                    onClick={() => {
+                        setFilter(cat);
+                        setDisplayLimit(4);
+                    }}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                         filter === cat 
                         ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' 
@@ -81,7 +85,7 @@ export const Projects: React.FC = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.slice(0, displayLimit).map((project, index) => (
               <motion.div
                 layout="position"
                 custom={index}
@@ -182,6 +186,28 @@ export const Projects: React.FC = () => {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Show More Button */}
+        {filteredProjects.length > displayLimit && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex justify-center mt-12"
+          >
+            <button
+              onClick={() => setDisplayLimit(prev => prev + 4)}
+              className="group flex items-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-400 transition-all shadow-sm hover:shadow-md"
+            >
+              Afficher plus
+              <motion.span
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                ↓
+              </motion.span>
+            </button>
+          </motion.div>
+        )}
       </div>
 
       <ProjectModal 
