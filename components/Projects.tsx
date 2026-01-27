@@ -158,7 +158,7 @@ export const Projects: React.FC = () => {
                               </div>
                           </div>
 
-                          <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                          <div className="flex items-center gap-3 pt-4 mt-auto border-t border-slate-100 dark:border-slate-800">
                               <button 
                                   onClick={() => setSelectedProject(project)}
                                   className="flex-1 flex items-center justify-center gap-2 py-2 bg-slate-900 dark:bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-blue-700 transition-colors"
@@ -167,6 +167,8 @@ export const Projects: React.FC = () => {
                               </button>
                               <a 
                                 href={project.demoUrl} 
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 aria-label={`Voir la démo du projet ${project.title}`}
                                 className="p-2 text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors"
                               >
@@ -174,6 +176,8 @@ export const Projects: React.FC = () => {
                               </a>
                               <a 
                                 href="#" 
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
                                 className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                               >

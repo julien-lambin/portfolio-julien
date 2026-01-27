@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
     fullDescription: 'Développement d\'une extension Chrome permettant aux utilisateurs de poser des marqueurs temporels personnalisés sur les vidéos YouTube. L\'outil facilite la prise de notes et la navigation rapide vers les segments importants.',
     image: '/assets/img/lp-yt-marker.webp',
     tags: ['JavaScript', 'Browser Extension', 'Productivité'],
-    demoUrl: '#'
+    demoUrl: 'https://chromewebstore.google.com/detail/yt-marker-youtube-timesta/aefdjejbkmjhdocmbmimijdaeampdcjk'
   }
 ];
 
