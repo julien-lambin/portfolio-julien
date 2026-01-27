@@ -87,11 +87,11 @@ export const Projects: React.FC = () => {
           <AnimatePresence mode="popLayout">
             {filteredProjects.slice(0, displayLimit).map((project, index) => (
               <motion.div
-                layout="position"
+                layout
                 custom={index}
                 variants={cardVariants}
                 initial="hidden"
-                whileInView="visible"
+                animate="visible"
                 exit="exit"
                 viewport={{ once: true, margin: "-50px" }}
                 key={project.id}
@@ -187,23 +187,30 @@ export const Projects: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Show More Button */}
-        {filteredProjects.length > displayLimit && (
+        {/* Toggle Button */}
+        {filteredProjects.length > 4 && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex justify-center mt-12"
           >
             <button
-              onClick={() => setDisplayLimit(prev => prev + 4)}
-              className="group flex items-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-600 dark:hover:border-blue-400 transition-all shadow-sm hover:shadow-md"
+              onClick={() => {
+                const newLimit = displayLimit > 4 ? 4 : filteredProjects.length;
+                setDisplayLimit(newLimit);
+                if (newLimit === 4) {
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="group flex items-center gap-2 px-6 py-2 text-slate-500 dark:text-slate-400 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Afficher plus
+              {displayLimit > 4 ? 'Réduire' : 'Voir tout'}
               <motion.span
-                animate={{ y: [0, 4, 0] }}
+                animate={{ y: displayLimit > 4 ? [0, -2, 0] : [0, 2, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
+                className="text-lg"
               >
-                ↓
+                {displayLimit > 4 ? '↑' : '↓'}
               </motion.span>
             </button>
           </motion.div>

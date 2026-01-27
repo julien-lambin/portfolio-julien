@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     title: 'Chercheur Immo',
     category: 'Immobilier',
     description: 'Site de recherche immobilière simplifié pour les particuliers.',
-    fullDescription: 'Création complète d’un site de recherche d’annonces. L’objectif était de rendre la recherche simple et rapide pour les clients, avec un système de prise de rendez-vous automatique pour gagner du temps.',
+    fullDescription: 'Création complète d’un site de recherche d’annonces. L’objectif était de rendre la recherche simple et rapide pour les clients, avec un système de formulaire complet visant a connaitre au mieux les attentes des clients.',
     image: '/assets/img/lp-chercheur-immo.webp',
     tags: ['Site Web', 'Gestion Client', 'Carte Interactive'],
     demoUrl: '#',
