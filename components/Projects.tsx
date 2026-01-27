@@ -95,7 +95,7 @@ export const Projects: React.FC = () => {
                 exit="exit"
                 viewport={{ once: true, margin: "-50px" }}
                 key={project.id}
-                className="relative group h-full md:h-[280px]"
+                className="relative group h-full"
               >
                   {/* Luminous Border Animation Layer */}
                   <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" preserveAspectRatio="none">
@@ -124,9 +124,9 @@ export const Projects: React.FC = () => {
                       />
                   </svg>
 
-                  <div className="h-full bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row">
+                  <div className="h-full min-h-[420px] md:min-h-[300px] bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row">
                       {/* Image Section */}
-                      <div className="w-full md:w-5/12 h-48 md:h-full relative overflow-hidden bg-slate-100 dark:bg-slate-800">
+                      <div className="w-full md:w-5/12 h-48 md:h-auto relative overflow-hidden bg-slate-100 dark:bg-slate-800">
                           <img 
                               src={project.image} 
                               alt={project.title}
@@ -139,8 +139,8 @@ export const Projects: React.FC = () => {
                       </div>
 
                       {/* Content Section */}
-                      <div className="flex-1 p-6 flex flex-col justify-between">
-                          <div>
+                      <div className="flex-1 p-6 flex flex-col">
+                          <div className="flex-1">
                               <div className="flex justify-between items-start mb-2">
                                   <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{project.title}</h3>
                                   <span className="text-xs font-semibold px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded">
@@ -158,7 +158,7 @@ export const Projects: React.FC = () => {
                               </div>
                           </div>
 
-                          <div className="flex items-center gap-3 pt-4 mt-auto border-t border-slate-100 dark:border-slate-800">
+                          <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
                               <button 
                                   onClick={() => setSelectedProject(project)}
                                   className="flex-1 flex items-center justify-center gap-2 py-2 bg-slate-900 dark:bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-blue-700 transition-colors"
@@ -179,7 +179,7 @@ export const Projects: React.FC = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
-                                className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                                className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-200 dark:hover:bg-slate-700 transition-colors"
                               >
                                   <Github size={18} />
                               </a>
