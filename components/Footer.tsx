@@ -17,14 +17,18 @@ export const Footer: React.FC<FooterProps> = ({ onLegalClick }) => {
 
         <div className="flex items-center gap-4">
             <a 
-              href="#" 
+              href="https://www.linkedin.com/in/julien-lambin-7b1ab8216/" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Mon profil LinkedIn"
               className="p-2 text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full transition-all"
             >
                 <Linkedin size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://github.com/julien-lambin" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Mon profil GitHub"
               className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-all"
             >
@@ -32,14 +36,9 @@ export const Footer: React.FC<FooterProps> = ({ onLegalClick }) => {
             </a>
             <a 
               href="#" 
-              aria-label="Me suivre sur Twitter"
-              className="p-2 text-slate-400 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800 rounded-full transition-all"
-            >
-                <Twitter size={20} />
-            </a>
-            <a 
-              href="#" 
-              aria-label="Mon site web principal"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Mon site web"
               className="p-2 text-slate-400 hover:text-pink-500 dark:hover:text-pink-400 hover:bg-pink-50 dark:hover:bg-slate-800 rounded-full transition-all"
             >
                 <Globe size={20} />

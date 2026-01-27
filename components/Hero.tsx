@@ -96,19 +96,15 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           
           <div className="flex items-center gap-3">
             <a 
-              href="#" 
+              href="https://github.com/julien-lambin" 
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Voir mon profil GitHub"
               className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm"
             >
                 <Github size={20} />
             </a>
-            <a 
-              href="#" 
-              aria-label="Me contacter sur LinkedIn"
-              className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm"
-            >
-                <Linkedin size={20} />
-            </a>
+
           </div>
         </motion.div>
       </motion.div>

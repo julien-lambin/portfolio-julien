@@ -243,7 +243,7 @@ const MaintenanceVisual = () => (
                             <Monitor size={16} className="text-slate-400" />
                             <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Disponibilité du site</span>
                         </div>
-                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100 dark:bg-emerald-900/40 px-2.5 py-0.5 rounded-full">100%</span>
+                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100 dark:bg-emerald-900/40 px-2.5 py-0.5 rounded-full">99.9%</span>
                     </div>
                 </div>
              </div>
