@@ -72,29 +72,3 @@ export const PROJECTS: Project[] = [
   }
 ];
 
-export const SERVICES: Service[] = [
-  {
-    id: 'dev',
-    title: 'Création de Site Web',
-    description: 'Des sites vitrines modernes ou des boutiques en ligne pour présenter votre activité et vendre vos services.',
-    icon: 'code'
-  },
-  {
-    id: 'seo',
-    title: 'Visibilité Google',
-    description: 'Soyez présent là où vos clients vous cherchent. J\'optimise votre placement pour attirer plus de visiteurs qualifiés.',
-    icon: 'search'
-  },
-  {
-    id: 'maintenance',
-    title: 'Suivi & Sécurité',
-    description: 'Je veille sur votre site au quotidien : mises à jour, sauvegardes et dépannage rapide en cas de besoin.',
-    icon: 'shield'
-  },
-  {
-    id: 'branding',
-    title: 'Identité Visuelle',
-    description: 'Création de votre logo et d\'une charte graphique qui vous ressemble pour une image pro et rassurante.',
-    icon: 'pen'
-  }
-];

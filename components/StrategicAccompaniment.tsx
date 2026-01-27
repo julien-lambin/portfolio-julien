@@ -223,27 +223,27 @@ const MaintenanceVisual = () => (
              
              {/* Abstract Server / Shield */}
              <div className="relative z-10 text-center">
-                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-2xl flex items-center justify-center shadow-inner mb-6 relative">
-                    <ShieldCheck size={48} className="text-emerald-500" />
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
+                <div className="w-28 h-28 mx-auto bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-2xl flex items-center justify-center shadow-inner mb-7 relative">
+                    <ShieldCheck size={56} className="text-emerald-500" />
+                    <div className="absolute -top-2.5 -right-2.5 w-7 h-7 bg-emerald-500 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-900">
                         <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
                     </div>
                 </div>
                 
-                <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4 border border-slate-100 dark:border-slate-700 w-64">
-                    <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                            <Database size={14} className="text-slate-400" />
-                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">Backup Hebdo</span>
+                <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-5 border border-slate-100 dark:border-slate-700 w-72 shadow-lg">
+                    <div className="flex items-center justify-between mb-3.5">
+                        <div className="flex items-center gap-2.5">
+                            <Database size={16} className="text-slate-400" />
+                            <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Sauvegarde Hebdo</span>
                         </div>
-                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">OK</span>
+                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100 dark:bg-emerald-900/40 px-2.5 py-0.5 rounded-full">OK</span>
                     </div>
                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                            <Monitor size={14} className="text-slate-400" />
-                            <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">Uptime</span>
+                        <div className="flex items-center gap-2.5">
+                            <Monitor size={16} className="text-slate-400" />
+                            <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Disponibilité du site</span>
                         </div>
-                        <span className="text-[10px] text-emerald-600 font-bold">100%</span>
+                        <span className="text-[10px] text-emerald-600 font-bold bg-emerald-100 dark:bg-emerald-900/40 px-2.5 py-0.5 rounded-full">100%</span>
                     </div>
                 </div>
              </div>
