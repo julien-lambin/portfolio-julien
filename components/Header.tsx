@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
   const navItems = [
     { id: 'home', label: 'À propos', icon: User },
     { id: 'projects', label: 'Projets', icon: Briefcase },
-    { id: 'resume', label: 'Services', icon: FileText },
+    { id: 'accompaniment', label: 'Services', icon: FileText },
     { id: 'skills', label: 'Compétences', icon: Code2 },
   ];
 

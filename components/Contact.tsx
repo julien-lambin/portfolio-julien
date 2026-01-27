@@ -138,7 +138,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Message</label>
-                        <textarea name="message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all resize-none" placeholder="Bonjour, je souhaiterais..."></textarea>
+                        <textarea name="message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 outline-none transition-all resize-none" placeholder="Votre message..."></textarea>
                     </div>
                     <button 
                         type="submit" 

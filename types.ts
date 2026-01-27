@@ -24,4 +24,4 @@ export interface Service {
   icon: 'code' | 'search' | 'shield' | 'pen';
 }
 
-export type SectionId = 'home' | 'skills' | 'resume' | 'projects' | 'contact';
+export type SectionId = 'home' | 'skills' | 'accompaniment' | 'projects' | 'contact';
