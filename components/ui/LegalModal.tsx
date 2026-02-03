@@ -65,7 +65,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
                     <p className="font-bold">Julien Lambin</p>
                     <p>Développeur Web Freelance</p>
                     <p>E-mail : julienldev@gmail.com</p>
-                    <p>Lieu d'activité : Pas-de-Calais, France</p>
+                    <p>Lieu d'activité : Bapaume (62), France / Rayonnement Arras - Cambrai</p>
                   </div>
                 </section>
 
@@ -100,7 +100,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
             {/* Footer */}
             <div className="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 text-center">
                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Dernière mise à jour : Février 2026
+                  Dernière mise à jour : 04 Février 2026
                </p>
             </div>
 
