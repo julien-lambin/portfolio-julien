@@ -63,10 +63,9 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
                   <h3 className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3">1. Éditeur du site</h3>
                   <div className="text-slate-600 dark:text-slate-400 space-y-1">
                     <p className="font-bold">Julien Lambin</p>
-                    <p>Entrepreneur individuel / Développeur Freelance</p>
-                    <p>SIRET : [VOTRE SIRET]</p>
-                    <p>E-mail : [VOTRE EMAIL]</p>
-                    <p>Lieu d'activité : [VOTRE VILLE, FRANCE]</p>
+                    <p>Développeur Web Freelance</p>
+                    <p>E-mail : julienldev@gmail.com</p>
+                    <p>Lieu d'activité : Pas-de-Calais, France</p>
                   </div>
                 </section>
 
@@ -82,16 +81,16 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
 
                 <section>
                   <h3 className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3">3. Propriété intellectuelle</h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
                   </p>
                 </section>
 
                 <section>
                   <h3 className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3">4. Protection des données (RGPD)</h3>
-                  <p className="text-slate-600 dark:text-slate-400">
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
                     Ce site ne collecte aucune donnée personnelle via des cookies de suivi tiers. 
-                    Les informations envoyées via le formulaire de contact sont stockées via Web3Forms uniquement pour répondre à vos demandes de projets.
+                    Les informations envoyées via le formulaire de contact (nom, email, message) sont utilisées exclusivement pour répondre à vos demandes de projets et ne sont jamais partagées avec des tiers.
                   </p>
                 </section>
 
@@ -101,7 +100,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
             {/* Footer */}
             <div className="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 text-center">
                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Dernière mise à jour : Janvier 2026
+                  Dernière mise à jour : Février 2026
                </p>
             </div>
 
