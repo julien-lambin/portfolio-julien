@@ -20,6 +20,18 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 'atelier-seve',
+    title: 'Atelier Sève',
+    category: 'Vitrine',
+    description: 'Site vitrine moderne pour un atelier créatif.',
+    fullDescription: 'Conception et réalisation d’un site vitrine élégant mettant en avant le savoir-faire de l’Atelier Sève. Un design épuré et une navigation fluide pour présenter leurs créations.',
+    image: '/assets/img/lp-atelier-seve.webp',
+    tags: ['WordPress', 'Site Vitrine', 'Design'],
+    demoUrl: 'https://demo-atelier-seve.julienlambin.fr/',
+    githubUrl: '#',
+    featured: true
+  },
+  {
     id: 'chercheur-immo',
     title: 'Chercheur Immo',
     category: 'Immobilier',
