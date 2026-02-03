@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/img/lp-chercheur-immo.webp',
     tags: ['Plugin personnalisé', 'Site Web', 'Gestion Client', 'Carte Interactive'],
     demoUrl: 'https://demo-chercheur-immo.julienlambin.fr/',
-    githubUrl: '#',
+    githubUrl: 'https://github.com/julien-lambin/form-ma-recherche-immo',
     featured: true
   },
   {
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/img/lp-hms.webp',
     tags: ['Outil Interactif', 'IA', 'Design Moderne'],
     demoUrl: 'https://demo-hms.julienlambin.fr/',
-    githubUrl: '#'
+    githubUrl: 'https://github.com/julien-lambin/build-upgrader'
   },
   {
     id: 'scolarsuite',
@@ -73,7 +73,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/img/lp-yt-marker.webp',
     tags: ['JavaScript', 'Browser Extension', 'Productivité'],
     demoUrl: 'https://chromewebstore.google.com/detail/yt-marker-youtube-timesta/aefdjejbkmjhdocmbmimijdaeampdcjk',
-    githubUrl: '#'
+    githubUrl: 'https://github.com/julien-lambin/yt-marker'
   }
 ];
 
