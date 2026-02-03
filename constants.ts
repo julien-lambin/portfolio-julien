@@ -28,6 +28,7 @@ export const PROJECTS: Project[] = [
     image: '/assets/img/lp-chercheur-immo.webp',
     tags: ['Plugin personnalisé', 'Site Web', 'Gestion Client', 'Carte Interactive'],
     demoUrl: 'https://demo-chercheur-immo.julienlambin.fr/',
+    githubUrl: '#',
     featured: true
   },
   {
@@ -38,7 +39,8 @@ export const PROJECTS: Project[] = [
     fullDescription: 'Un outil interactif qui aide les utilisateurs à choisir le meilleur matériel pour leur bureau. Le site guide les clients pas à pas pour créer une configuration qui leur ressemble.',
     image: '/assets/img/lp-hms.webp',
     tags: ['Outil Interactif', 'IA', 'Design Moderne'],
-    demoUrl: '#'
+    demoUrl: 'https://demo-hms.julienlambin.fr/',
+    githubUrl: '#'
   },
   {
     id: 'scolarsuite',
@@ -48,7 +50,8 @@ export const PROJECTS: Project[] = [
     fullDescription: 'Une solution complète pour aider les photographes à gérer leurs commandes sans stress. Tout est automatisé pour éviter les erreurs et gagner des heures de travail.',
     image: '/assets/img/lp-ScolarSuite.webp',
     tags: ['Logiciel', 'Gestion', 'Productivité'],
-    demoUrl: '#'
+    demoUrl: 'https://github.com/julien-lambin/ScolarSuite',
+    githubUrl: 'https://github.com/julien-lambin/ScolarSuite'
   },
   {
     id: 'champignon',
@@ -58,7 +61,8 @@ export const PROJECTS: Project[] = [
     fullDescription: 'Développement d’un site e-commerce complet sous WooCommerce. Une interface travaillée pour mettre en valeur des produits artisanaux uniques, avec un parcours d’achat fluide et sécurisé.',
     image: '/assets/img/lp-champignon.webp',
     tags: ['WooCommerce', 'WordPress', 'Design'],
-    demoUrl: '#'
+    demoUrl: 'https://demo-champignon.julienlambin.fr/',
+    githubUrl: '#'
   },
   {
     id: 'yt-marker',
@@ -68,7 +72,8 @@ export const PROJECTS: Project[] = [
     fullDescription: 'Développement d\'une extension Chrome permettant aux utilisateurs de poser des marqueurs temporels personnalisés sur les vidéos YouTube. L\'outil facilite la prise de notes et la navigation rapide vers les segments importants.',
     image: '/assets/img/lp-yt-marker.webp',
     tags: ['JavaScript', 'Browser Extension', 'Productivité'],
-    demoUrl: 'https://chromewebstore.google.com/detail/yt-marker-youtube-timesta/aefdjejbkmjhdocmbmimijdaeampdcjk'
+    demoUrl: 'https://chromewebstore.google.com/detail/yt-marker-youtube-timesta/aefdjejbkmjhdocmbmimijdaeampdcjk',
+    githubUrl: '#'
   }
 ];
 

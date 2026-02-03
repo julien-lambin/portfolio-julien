@@ -174,15 +174,17 @@ export const Projects: React.FC = () => {
                               >
                                   <ArrowUpRight size={18} />
                               </a>
-                              <a 
-                                href="#" 
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
-                                className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-200 dark:hover:bg-slate-700 transition-colors"
-                              >
-                                  <Github size={18} />
-                              </a>
+                              {project.githubUrl && project.githubUrl !== '#' && (
+                                <a 
+                                  href={project.githubUrl} 
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`Voir le code source du projet ${project.title} sur GitHub`}
+                                  className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-slate-800 rounded-lg hover:bg-blue-200 dark:hover:bg-slate-700 transition-colors"
+                                >
+                                    <Github size={18} />
+                                </a>
+                              )}
                           </div>
                       </div>
                   </div>

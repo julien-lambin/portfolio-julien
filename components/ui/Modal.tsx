@@ -90,15 +90,27 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onC
               </p>
 
               <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
-                <a 
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white font-medium rounded-lg transition-all active:scale-95 group"
-                >
-                  Visiter la démo
-                  <ExternalLink size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
-                </a>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a 
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center flex-1 px-6 py-3 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white font-medium rounded-lg transition-all active:scale-95 group"
+                  >
+                    Visiter la démo
+                    <ExternalLink size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
+                  </a>
+                  {project.githubUrl && project.githubUrl !== '#' && (
+                    <a 
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center sm:w-auto px-6 py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-medium rounded-lg transition-all active:scale-95 group"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
