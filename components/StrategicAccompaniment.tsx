@@ -8,19 +8,19 @@ import {
 
 const ACCOMPAGNEMENT_STEPS = [
   {
-    id: 'design',
-    title: 'Une image de marque qui rassure.',
-    description: "Je donne à votre entreprise une allure professionnelle et moderne. Du logo aux couleurs du site, je crée un univers cohérent qui donne confiance à vos futurs clients dès le premier regard.",
+    id: 'evolution',
+    title: 'Évolutivité & Accompagnement.',
+    description: "Votre entreprise bouge, votre site aussi. Je reste à vos côtés pour ajouter des fonctionnalités, créer de nouvelles pages ou ajuster vos messages au fil de votre croissance.",
   },
   {
     id: 'seo',
-    title: 'Soyez visible sur Google.',
-    description: "Un beau site ne sert à rien si personne ne le trouve. J'optimise votre présence locale pour que vos clients vous trouvent facilement en tapant vos services sur Google.",
+    title: 'Visibilité & Croissance (SEO).',
+    description: "Un beau site ne sert à rien si personne ne le trouve. Je travaille sur votre référencement pour que vos clients vous trouvent naturellement en tapant vos services sur Google.",
   },
   {
     id: 'serenity',
     title: 'Sérénité totale, zéro souci technique.',
-    description: "Votre site vous appartient à 100%. Je m'occupe de la technique, des mises à jour et de la sécurité pour que vous puissiez vous concentrer à 100% sur votre métier.",
+    description: "Concentrez-vous sur votre métier. Je m'occupe de la maintenance, de la sécurité et des mises à jour pour que votre outil de vente soit toujours performant, 24h/24.",
   }
 ];
 
@@ -36,7 +36,7 @@ export const StrategicAccompaniment: React.FC = () => {
                 viewport={{ once: true }}
                 className="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold tracking-widest uppercase mb-4"
             >
-                Accompagnement Stratégique
+                Partenariat Long Terme
             </motion.span>
             <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export const StrategicAccompaniment: React.FC = () => {
                 transition={{ delay: 0.1 }}
                 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white"
             >
-                Plus qu'un site web, <br/> une <span className="text-blue-600 dark:text-blue-500">machine de croissance</span>.
+                Bien plus qu'un site web, <br/> un <span className="text-blue-600 dark:text-blue-500">partenaire de réussite</span>.
             </motion.h2>
         </div>
 

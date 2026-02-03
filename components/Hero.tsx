@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           variants={itemVariants}
           className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-medium transition-colors"
         >
-          Je crée des sites web professionnels, rapides et faciles à gérer pour vous aider à trouver plus de clients et à gagner du temps au quotidien.
+          Je conçois des sites web professionnels qui captent l'attention, instaurent une confiance immédiate et propulsent la croissance de votre entreprise.
         </motion.p>
 
         <motion.div 

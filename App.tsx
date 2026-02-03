@@ -3,6 +3,7 @@ import { Background } from './components/ui/Background';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
+import { Methodology } from './components/Methodology';
 import { Skills } from './components/Skills';
 import { StrategicAccompaniment } from './components/StrategicAccompaniment';
 import { Projects } from './components/Projects';
@@ -53,6 +54,7 @@ const App: React.FC = () => {
         <main>
           <Hero onNavigate={scrollToSection} />
           <Projects />
+          <Methodology />
           <StrategicAccompaniment />
           <Skills />
           <Contact />

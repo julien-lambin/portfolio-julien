@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SectionId } from '../types';
 import { motion } from 'framer-motion';
-import { User, Code2, FileText, Briefcase, Mail, Moon, Sun } from 'lucide-react';
+import { User, Code2, FileText, Briefcase, Mail, Moon, Sun, ShieldCheck } from 'lucide-react';
 
 const logo = '/assets/img/logo_simplev3.webp';
 
@@ -23,9 +23,9 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
   }, []);
 
   const navItems = [
-    { id: 'home', label: 'À propos', icon: User },
     { id: 'projects', label: 'Projets', icon: Briefcase },
-    { id: 'accompaniment', label: 'Services', icon: FileText },
+    { id: 'methodology', label: 'Ma Méthode', icon: FileText },
+    { id: 'accompaniment', label: 'Solution', icon: ShieldCheck },
     { id: 'skills', label: 'Compétences', icon: Code2 },
   ];
 
