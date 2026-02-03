@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     id: 'atelier-seve',
     title: 'Atelier Sève',
     category: 'Vitrine',
-    description: 'Site vitrine moderne pour un atelier créatif.',
+    description: 'Site vitrine moderne pour un atelier créatif, alliant design épuré et savoir-faire.',
     fullDescription: 'Conception et réalisation d’un site vitrine élégant mettant en avant le savoir-faire de l’Atelier Sève. Un design épuré et une navigation fluide pour présenter leurs créations.',
     image: '/assets/img/lp-atelier-seve.webp',
     tags: ['WordPress', 'Site Vitrine', 'Design'],
