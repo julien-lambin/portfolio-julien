@@ -127,8 +127,8 @@ export const Methodology: React.FC = () => {
 
                     <ul className="space-y-5">
                       {step.points.map((point) => (
-                        <li key={point} className="flex items-center gap-4 group/item">
-                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${step.color} transition-all duration-300 group-hover/item:scale-150`} />
+                        <li key={point} className="flex items-start gap-4 group/item">
+                          <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${step.color} mt-2.5 flex-shrink-0 transition-all duration-300 group-hover/item:scale-150`} />
                           <span className="text-sm md:text-base font-bold text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-200 transition-colors duration-300">
                             {point}
                           </span>
