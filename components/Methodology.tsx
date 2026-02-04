@@ -10,8 +10,8 @@ export const Methodology: React.FC = () => {
       subtitle: "Comprendre pour mieux agir",
       points: [
         "Analyse de vos besoins et objectifs",
-        "Identification de ce qui bloque vos ventes",
-        "Compréhension de vos clients idéaux"
+        "Identification de ce qui bloque vos prospects",
+        "Compréhension des besoins de vos clients"
       ],
       icon: Target,
       color: "from-blue-600 to-indigo-600",
