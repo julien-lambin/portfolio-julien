@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           className="inline-flex items-center gap-2 px-6 py-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 rounded-full text-blue-700 dark:text-blue-300 font-semibold text-sm md:text-base mb-8 shadow-sm transition-colors"
         >
             <Code2 size={20} className="text-blue-600 dark:text-blue-400" />
-            Créateur de sites web pour entrepreneurs & PME
+            Créateur de sites web pour artisans, entrepreneurs & TPE
         </motion.div>
         
         <motion.p 
