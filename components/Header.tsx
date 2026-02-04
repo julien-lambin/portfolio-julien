@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, theme, toggleTheme }
   }, []);
 
   const navItems = [
-    { id: 'projects', label: 'Projets', icon: Briefcase },
+    { id: 'projects', label: 'Mes réalisations', icon: Briefcase },
     { id: 'methodology', label: 'Ma Méthode', icon: FileText },
     { id: 'accompaniment', label: 'Solution', icon: ShieldCheck },
     { id: 'skills', label: 'Compétences', icon: Code2 },
