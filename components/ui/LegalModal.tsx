@@ -89,8 +89,13 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
                 <section>
                   <h3 className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3">4. Protection des données (RGPD)</h3>
                   <p className="text-slate-600 dark:text-slate-400 text-sm">
-                    Ce site ne collecte aucune donnée personnelle via des cookies de suivi tiers. 
-                    Les informations envoyées via le formulaire de contact (nom, email, message) sont utilisées exclusivement pour répondre à vos demandes de projets et ne sont jamais partagées avec des tiers.
+                    Ce site utilise des cookies via <strong>Google Tag Manager</strong> et <strong>Google Analytics</strong> uniquement à des fins de mesure d'audience anonyme.
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-3">
+                    Conformément au RGPD, ces traceurs ne sont activés qu'après votre consentement explicite via le bandeau dédié. Vous pouvez retirer ce consentement à tout moment en supprimant les cookies de votre navigateur.
+                  </p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mt-3">
+                    Les informations envoyées via le formulaire de contact (nom, email, message) sont utilisées exclusivement pour répondre à vos demandes de projets.
                   </p>
                 </section>
 
