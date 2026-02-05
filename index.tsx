@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { CookieConsent } from './components/ui/CookieConsent';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -11,5 +12,6 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <App />
+    <CookieConsent />
   </React.StrictMode>
 );
