@@ -496,6 +496,36 @@ const TextAreaField = ({ label, name, value, onChange, placeholder }: any) => (
     </div>
 );
 
+const CustomTimePicker = ({ value, onChange, disabled }: { value: string, onChange: (val: string) => void, disabled?: boolean }) => {
+    const h = value?.split(':')[0] || '09';
+    const m = value?.split(':')[1] || '00';
+    
+    const hours = Array.from({ length: 24 }, (_, i) => i.toString().padStart(2, '0'));
+    const minutes = ['00', '15', '30', '45'];
+
+    return (
+        <div className={`flex items-center gap-1 px-2 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm transition-all focus-within:ring-2 focus-within:ring-blue-500/50 ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:border-blue-400 dark:hover:border-blue-500/50'}`}>
+            <select 
+                value={h} 
+                disabled={disabled}
+                onChange={(e) => onChange(`${e.target.value}:${m}`)}
+                className="bg-transparent text-sm font-semibold outline-none cursor-pointer dark:text-white appearance-none"
+            >
+                {hours.map(hour => <option key={hour} value={hour} className="dark:bg-slate-900">{hour}</option>)}
+            </select>
+            <span className="text-blue-500 dark:text-blue-400 font-bold">:</span>
+            <select 
+                value={m} 
+                disabled={disabled}
+                onChange={(e) => onChange(`${h}:${e.target.value}`)}
+                className="bg-transparent text-sm font-semibold outline-none cursor-pointer dark:text-white appearance-none"
+            >
+                {minutes.map(min => <option key={min} value={min} className="dark:bg-slate-900">{min}</option>)}
+            </select>
+        </div>
+    );
+};
+
 const ScheduleTable = ({ hours, onChange }: { hours: ScheduleData, onChange: (day: string, field: keyof DaySchedule, value: any) => void }) => {
     const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
     
@@ -512,39 +542,31 @@ const ScheduleTable = ({ hours, onChange }: { hours: ScheduleData, onChange: (da
                     <div key={day} className={`grid grid-cols-[100px_1fr_1fr_80px] gap-4 items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800/50 last:border-0 ${hours[day].closed ? 'opacity-50' : ''}`}>
                         <div className="font-semibold text-sm text-slate-700 dark:text-slate-300">{day}</div>
                         
-                        <div className="flex items-center gap-1">
-                            <input 
-                                type="time" 
+                        <div className="flex items-center justify-center gap-2">
+                            <CustomTimePicker 
                                 disabled={hours[day].closed}
                                 value={hours[day].amStart}
-                                onChange={(e) => onChange(day, 'amStart', e.target.value)}
-                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                                onChange={(val) => onChange(day, 'amStart', val)}
                             />
-                            <span className="text-slate-400 text-xs">-</span>
-                            <input 
-                                type="time" 
+                            <span className="text-slate-400 text-xs">à</span>
+                            <CustomTimePicker 
                                 disabled={hours[day].closed}
                                 value={hours[day].amEnd}
-                                onChange={(e) => onChange(day, 'amEnd', e.target.value)}
-                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                                onChange={(val) => onChange(day, 'amEnd', val)}
                             />
                         </div>
 
-                        <div className="flex items-center gap-1">
-                            <input 
-                                type="time" 
+                        <div className="flex items-center justify-center gap-2">
+                            <CustomTimePicker 
                                 disabled={hours[day].closed}
                                 value={hours[day].pmStart}
-                                onChange={(e) => onChange(day, 'pmStart', e.target.value)}
-                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                                onChange={(val) => onChange(day, 'pmStart', val)}
                             />
-                            <span className="text-slate-400 text-xs">-</span>
-                            <input 
-                                type="time" 
+                            <span className="text-slate-400 text-xs">à</span>
+                            <CustomTimePicker 
                                 disabled={hours[day].closed}
                                 value={hours[day].pmEnd}
-                                onChange={(e) => onChange(day, 'pmEnd', e.target.value)}
-                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                                onChange={(val) => onChange(day, 'pmEnd', val)}
                             />
                         </div>
 
