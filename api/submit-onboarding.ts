@@ -67,9 +67,35 @@ export default async function handler(req: any, res: any) {
                 <li><strong>Email :</strong> ${escapeHtml(email)}</li>
                 <li><strong>Téléphone :</strong> ${escapeHtml(phone) || 'N/A'}</li>
                 <li><strong>Adresse :</strong> ${escapeHtml(address) || 'N/A'}</li>
-                <li><strong>Horaires :</strong> ${escapeHtml(hours) || 'N/A'}</li>
-                <li><strong>Réseaux :</strong> ${escapeHtml(socials) || 'N/A'}</li>
             </ul>
+
+            <h3 style="border-bottom: 1px solid #eee; padding-bottom: 8px;">4. Horaires</h3>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                <thead>
+                    <tr style="background: #f8fafc; text-align: left;">
+                        <th style="padding: 8px; border: 1px solid #eee;">Jour</th>
+                        <th style="padding: 8px; border: 1px solid #eee;">Matin</th>
+                        <th style="padding: 8px; border: 1px solid #eee;">Après-midi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${Object.entries(hours as Record<string, any>).map(([day, sched]) => `
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #eee;"><strong>${day}</strong></td>
+                            <td style="padding: 8px; border: 1px solid #eee;">
+                                ${sched.closed ? '<span style="color: #ef4444;">Fermé</span>' : `${sched.amStart} - ${sched.amEnd}`}
+                            </td>
+                            <td style="padding: 8px; border: 1px solid #eee;">
+                                ${sched.closed ? '<span style="color: #ef4444;">Fermé</span>' : `${sched.pmStart} - ${sched.pmEnd}`}
+                            </td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+
+            <div style="margin-top: 20px;">
+                <p><strong>Réseaux :</strong> ${escapeHtml(socials) || 'N/A'}</p>
+            </div>
         </div>
       `,
       attachments,

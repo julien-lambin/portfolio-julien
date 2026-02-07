@@ -6,6 +6,16 @@ import { Background } from '../components/ui/Background';
 
 type Step = 'validation' | 'design' | 'content' | 'contact' | 'success';
 
+interface DaySchedule {
+  amStart: string;
+  amEnd: string;
+  pmStart: string;
+  pmEnd: string;
+  closed: boolean;
+}
+
+type ScheduleData = Record<string, DaySchedule>;
+
 interface FormData {
   // Step 1: Validation
   clientName: string;
@@ -25,7 +35,7 @@ interface FormData {
   phone: string;
   email: string;
   address: string;
-  hours: string;
+  hours: ScheduleData;
   socials: string;
   transferLink: string;
 }
@@ -51,7 +61,15 @@ export const Onboarding: React.FC = () => {
     phone: '',
     email: '',
     address: '',
-    hours: '',
+    hours: {
+      'Lundi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: false },
+      'Mardi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: false },
+      'Mercredi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: false },
+      'Jeudi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: false },
+      'Vendredi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: false },
+      'Samedi': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: true },
+      'Dimanche': { amStart: '09:00', amEnd: '12:00', pmStart: '14:00', pmEnd: '18:00', closed: true },
+    },
     socials: '',
     transferLink: ''
   });
@@ -59,6 +77,19 @@ export const Onboarding: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleScheduleChange = (day: string, field: keyof DaySchedule, value: any) => {
+    setFormData(prev => ({
+      ...prev,
+      hours: {
+        ...prev.hours,
+        [day]: {
+          ...prev.hours[day],
+          [field]: value
+        }
+      }
+    }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'logo' | 'photos') => {
@@ -377,7 +408,12 @@ export const Onboarding: React.FC = () => {
                                 <InputField label="Email de contact" name="email" value={formData.email} onChange={handleInputChange} placeholder="mon-entreprise@..." />
                             </div>
                             <InputField label="Adresse" name="address" value={formData.address} onChange={handleInputChange} placeholder="123 Rue de la République..." />
-                            <InputField label="Horaires" name="hours" value={formData.hours} onChange={handleInputChange} placeholder="Lun-Ven : 9h-18h" />
+                            
+                            <div className="space-y-4">
+                                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Horaires d'ouverture</label>
+                                <ScheduleTable hours={formData.hours} onChange={handleScheduleChange} />
+                            </div>
+
                             <InputField label="Liens vers vos réseaux sociaux" name="socials" value={formData.socials} onChange={handleInputChange} placeholder="Lien Facebook, LinkedIn, Instagram..." />
                         </div>
                     )}
@@ -459,3 +495,70 @@ const TextAreaField = ({ label, name, value, onChange, placeholder }: any) => (
         />
     </div>
 );
+
+const ScheduleTable = ({ hours, onChange }: { hours: ScheduleData, onChange: (day: string, field: keyof DaySchedule, value: any) => void }) => {
+    const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    
+    return (
+        <div className="overflow-x-auto -mx-2 md:mx-0">
+            <div className="min-w-[500px] p-2">
+                <div className="grid grid-cols-[100px_1fr_1fr_80px] gap-4 mb-2 px-4 py-2 bg-slate-100 dark:bg-slate-800/50 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-500">
+                    <div>Jour</div>
+                    <div className="text-center">Matin</div>
+                    <div className="text-center">Après-midi</div>
+                    <div className="text-center">Fermé</div>
+                </div>
+                {days.map(day => (
+                    <div key={day} className={`grid grid-cols-[100px_1fr_1fr_80px] gap-4 items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800/50 last:border-0 ${hours[day].closed ? 'opacity-50' : ''}`}>
+                        <div className="font-semibold text-sm text-slate-700 dark:text-slate-300">{day}</div>
+                        
+                        <div className="flex items-center gap-1">
+                            <input 
+                                type="time" 
+                                disabled={hours[day].closed}
+                                value={hours[day].amStart}
+                                onChange={(e) => onChange(day, 'amStart', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                            />
+                            <span className="text-slate-400 text-xs">-</span>
+                            <input 
+                                type="time" 
+                                disabled={hours[day].closed}
+                                value={hours[day].amEnd}
+                                onChange={(e) => onChange(day, 'amEnd', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                            />
+                        </div>
+
+                        <div className="flex items-center gap-1">
+                            <input 
+                                type="time" 
+                                disabled={hours[day].closed}
+                                value={hours[day].pmStart}
+                                onChange={(e) => onChange(day, 'pmStart', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                            />
+                            <span className="text-slate-400 text-xs">-</span>
+                            <input 
+                                type="time" 
+                                disabled={hours[day].closed}
+                                value={hours[day].pmEnd}
+                                onChange={(e) => onChange(day, 'pmEnd', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                            />
+                        </div>
+
+                        <div className="flex justify-center">
+                            <input 
+                                type="checkbox"
+                                checked={hours[day].closed}
+                                onChange={(e) => onChange(day, 'closed', e.target.checked)}
+                                className="w-5 h-5 rounded border-slate-300 dark:border-slate-700 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                            />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
