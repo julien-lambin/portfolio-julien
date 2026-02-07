@@ -239,7 +239,7 @@ export const Onboarding: React.FC = () => {
                 className="text-4xl md:text-6xl font-bold tracking-tight mb-6"
             >
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-400 pb-2">
-                    {formData.clientName ? `Bonjour ${formData.clientName} !` : "Bienvenue !"}
+                    {formData.clientName ? `Bonjour ${formData.clientName} !` : "Bonjour !"}
                 </span>
             </motion.h1>
             <motion.p 
@@ -509,34 +509,42 @@ const ScheduleTable = ({ hours, onChange }: { hours: ScheduleData, onChange: (da
                     <div className="text-center">Fermé</div>
                 </div>
                 {days.map(day => (
-                    <div key={day} className={`grid grid-cols-[100px_1fr_1fr_80px] gap-4 items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800/50 last:border-0 ${hours[day].closed ? 'opacity-50 text-slate-400' : ''}`}>
+                    <div key={day} className={`grid grid-cols-[100px_1fr_1fr_80px] gap-4 items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800/50 last:border-0 ${hours[day].closed ? 'opacity-50' : ''}`}>
                         <div className="font-semibold text-sm text-slate-700 dark:text-slate-300">{day}</div>
                         
-                        <div className="flex items-center gap-2 justify-center">
-                            <TimePicker 
+                        <div className="flex items-center gap-1">
+                            <input 
+                                type="time" 
                                 disabled={hours[day].closed}
                                 value={hours[day].amStart}
-                                onChange={(val) => onChange(day, 'amStart', val)}
+                                onChange={(e) => onChange(day, 'amStart', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                             />
-                            <span className="text-slate-400 text-xs">à</span>
-                            <TimePicker 
+                            <span className="text-slate-400 text-xs">-</span>
+                            <input 
+                                type="time" 
                                 disabled={hours[day].closed}
                                 value={hours[day].amEnd}
-                                onChange={(val) => onChange(day, 'amEnd', val)}
+                                onChange={(e) => onChange(day, 'amEnd', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                             />
                         </div>
 
-                        <div className="flex items-center gap-2 justify-center">
-                            <TimePicker 
+                        <div className="flex items-center gap-1">
+                            <input 
+                                type="time" 
                                 disabled={hours[day].closed}
                                 value={hours[day].pmStart}
-                                onChange={(val) => onChange(day, 'pmStart', val)}
+                                onChange={(e) => onChange(day, 'pmStart', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                             />
-                            <span className="text-slate-400 text-xs">à</span>
-                            <TimePicker 
+                            <span className="text-slate-400 text-xs">-</span>
+                            <input 
+                                type="time" 
                                 disabled={hours[day].closed}
                                 value={hours[day].pmEnd}
-                                onChange={(val) => onChange(day, 'pmEnd', val)}
+                                onChange={(e) => onChange(day, 'pmEnd', e.target.value)}
+                                className="w-full text-xs p-1.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
                             />
                         </div>
 
@@ -551,85 +559,6 @@ const ScheduleTable = ({ hours, onChange }: { hours: ScheduleData, onChange: (da
                     </div>
                 ))}
             </div>
-        </div>
-    );
-};
-
-const TimePicker = ({ value, onChange, disabled }: { value: string, onChange: (val: string) => void, disabled?: boolean }) => {
-    const [h, m] = value.split(':');
-    const [isFocused, setIsFocused] = useState(false);
-
-    const updateTime = (newH: string, newM: string) => {
-        // Basic validation and formatting
-        let hour = parseInt(newH) || 0;
-        let minute = parseInt(newM) || 0;
-        
-        if (hour > 23) hour = 23;
-        if (hour < 0) hour = 0;
-        if (minute > 59) minute = 59;
-        if (minute < 0) minute = 0;
-
-        const formattedH = hour.toString().padStart(2, '0');
-        const formattedM = minute.toString().padStart(2, '0');
-        onChange(`${formattedH}:${formattedM}`);
-    };
-
-    const presets = ['00', '15', '30', '45'];
-
-    return (
-        <div className="relative group">
-            <div className={`flex items-center bg-white dark:bg-slate-900 border ${isFocused ? 'border-blue-500 ring-2 ring-blue-500/20' : 'border-slate-200 dark:border-slate-700'} rounded-lg transition-all px-1.5 py-1 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-text'}`}>
-                <input 
-                    type="text"
-                    disabled={disabled}
-                    value={h}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-                    onChange={(e) => {
-                        const val = e.target.value.replace(/\D/g, '').slice(0, 2);
-                        updateTime(val, m);
-                    }}
-                    className="w-5 text-center bg-transparent border-none outline-none text-xs font-medium text-slate-700 dark:text-slate-200 p-0"
-                    placeholder="00"
-                />
-                <span className="text-slate-400 mx-0.5">:</span>
-                <input 
-                    type="text"
-                    disabled={disabled}
-                    value={m}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setTimeout(() => setIsFocused(false), 200)}
-                    onChange={(e) => {
-                        const val = e.target.value.replace(/\D/g, '').slice(0, 2);
-                        updateTime(h, val);
-                    }}
-                    className="w-5 text-center bg-transparent border-none outline-none text-xs font-medium text-slate-700 dark:text-slate-200 p-0"
-                    placeholder="00"
-                />
-            </div>
-
-            {/* Quick Select Tooltip */}
-            <AnimatePresence>
-                {isFocused && !disabled && (
-                    <motion.div 
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 5 }}
-                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-xl flex gap-1 z-50 overflow-hidden"
-                    >
-                        {presets.map(p => (
-                            <button
-                                key={p}
-                                type="button"
-                                onClick={() => updateTime(h, p)}
-                                className={`px-2 py-1 text-[10px] font-bold rounded ${m === p ? 'bg-blue-600 text-white' : 'hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400'}`}
-                            >
-                                {p}
-                            </button>
-                        ))}
-                    </motion.div>
-                )}
-            </AnimatePresence>
         </div>
     );
 };
