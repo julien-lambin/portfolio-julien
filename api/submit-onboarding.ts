@@ -38,35 +38,39 @@ export default async function handler(req: any, res: any) {
       });
     }
 
+    const escapeHtml = (str: string) => str?.replace(/[&<>"']/g, (m) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[m] || m)) || '';
+
     const { data, error } = await resend.emails.send({
       from: 'Onboarding <onboarding@resend.dev>',
       to: 'julienldev@gmail.com',
       subject: `[ONBOARDING] Nouveau dossier : ${companyName}`,
       replyTo: email,
       html: `
-        <h2>📁 Nouveau dossier d'Onboarding</h2>
-        <p><strong>Client :</strong> ${firstName} ${lastName} (${clientName || 'N/A'})</p>
-        
-        <h2>1. Identité</h2>
-        <p><strong>Entreprise :</strong> ${companyName}</p>
-        
-        <h2>2. Contenu</h2>
-        <h3>Présentation</h3>
-        <p>${presentation?.replace(/\n/g, '<br>') || 'Non renseigné'}</p>
-        <h3>Services</h3>
-        <p>${services?.replace(/\n/g, '<br>') || 'Non renseigné'}</p>
-        
-        <h2>3. Contact</h2>
-        <ul>
-            <li><strong>Email :</strong> ${email}</li>
-            <p><strong>Présentation :</strong> ${presentation || 'N/A'}</p>
-        <p><strong>Services :</strong> ${services || 'N/A'}</p>
-        <p><strong>Lien de transfert :</strong> ${transferLink ? `<a href="${transferLink}">${transferLink}</a>` : 'Aucun'}</p>
-            <li><strong>Téléphone :</strong> ${phone}</li>
-            <li><strong>Adresse :</strong> ${address}</li>
-            <li><strong>Horaires :</strong> ${hours}</li>
-            <li><strong>Réseaux :</strong> ${socials}</li>
-        </ul>
+        <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+            <h2 style="color: #2563eb;">📁 Nouveau dossier d'Onboarding</h2>
+            <p><strong>Client :</strong> ${escapeHtml(firstName)} ${escapeHtml(lastName)} (${escapeHtml(clientName) || 'N/A'})</p>
+            
+            <h3 style="border-bottom: 1px solid #eee; padding-bottom: 8px;">1. Identité</h3>
+            <p><strong>Entreprise :</strong> ${escapeHtml(companyName)}</p>
+            
+            <h3 style="border-bottom: 1px solid #eee; padding-bottom: 8px;">2. Contenu</h3>
+            <div style="background: #f8fafc; padding: 15px; rounded: 8px;">
+                <p><strong>Présentation :</strong><br>${escapeHtml(presentation).replace(/\n/g, '<br>') || 'N/A'}</p>
+                <p><strong>Services :</strong><br>${escapeHtml(services).replace(/\n/g, '<br>') || 'N/A'}</p>
+                <p><strong>Lien de transfert :</strong> ${transferLink ? `<a href="${transferLink}" style="color: #2563eb;">${escapeHtml(transferLink)}</a>` : 'Aucun'}</p>
+            </div>
+            
+            <h3 style="border-bottom: 1px solid #eee; padding-bottom: 8px;">3. Contact</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>Email :</strong> ${escapeHtml(email)}</li>
+                <li><strong>Téléphone :</strong> ${escapeHtml(phone) || 'N/A'}</li>
+                <li><strong>Adresse :</strong> ${escapeHtml(address) || 'N/A'}</li>
+                <li><strong>Horaires :</strong> ${escapeHtml(hours) || 'N/A'}</li>
+                <li><strong>Réseaux :</strong> ${escapeHtml(socials) || 'N/A'}</li>
+            </ul>
+        </div>
       `,
       attachments,
     });
