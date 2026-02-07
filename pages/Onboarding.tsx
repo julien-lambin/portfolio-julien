@@ -27,6 +27,7 @@ interface FormData {
   address: string;
   hours: string;
   socials: string;
+  transferLink: string;
 }
 
 const MAX_FILE_SIZE = 512 * 1024; // 512KB to ensure total payload < 4.5MB
@@ -38,9 +39,8 @@ export const Onboarding: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [formData, setFormData] = useState<FormData & { offreName: string }>({
+  const [formData, setFormData] = useState<FormData>({
     clientName: searchParams.get('client') || '',
-    offreName: searchParams.get('offre') || 'Vitrine Express',
     firstName: '',
     lastName: '',
     companyName: '',
@@ -52,7 +52,8 @@ export const Onboarding: React.FC = () => {
     email: '',
     address: '',
     hours: '',
-    socials: ''
+    socials: '',
+    transferLink: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -162,7 +163,7 @@ export const Onboarding: React.FC = () => {
   };
 
   const steps = [
-    { id: 'validation', label: 'Projet' },
+    { id: 'validation', label: 'Infos' },
     { id: 'design', label: 'Identité' },
     { id: 'content', label: 'Contenu' },
     { id: 'contact', label: 'Contact' },
@@ -180,10 +181,10 @@ export const Onboarding: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-white/50 dark:border-slate-800 text-center max-w-md w-full relative z-10"
             >
-                <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                     <Check size={40} />
                 </div>
-                <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-600 dark:from-green-400 dark:to-emerald-400">C'est tout bon !</h2>
+                <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">C'est tout bon !</h2>
                 <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
                     Merci {formData.firstName}. J'ai bien reçu vos éléments. Je commence l'intégration et je reviens vers vous très vite !
                 </p>
@@ -216,16 +217,18 @@ export const Onboarding: React.FC = () => {
                 transition={{ delay: 0.2 }}
                 className="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed"
             >
-                Votre projet {formData.offreName} est prêt à démarrer. J'ai simplement besoin de vos éléments pour commencer à coder.
+                La création de votre site web est sur le point de démarrer. J'ai simplement besoin de quelques éléments pour lui donner vie.
             </motion.p>
         </div>
 
         {/* Progress Steps */}
-        <div className="mb-8 max-w-2xl mx-auto w-full">
-            <div className="flex justify-between mb-3 text-sm font-semibold tracking-wide uppercase text-slate-400 dark:text-slate-500">
+        <div className="mb-8 max-w-2xl mx-auto w-full px-2 md:px-0">
+            <div className="flex justify-between mb-3 text-xs md:text-sm font-semibold tracking-wide uppercase text-slate-400 dark:text-slate-500">
                 {steps.map((step, idx) => (
-                    <span key={step.id} className={`${getStepIndex(currentStep) >= idx ? "text-blue-600 dark:text-blue-400" : ""} transition-colors duration-300`}>
-                       {idx + 1}. {step.label}
+                    <span key={step.id} className={`${getStepIndex(currentStep) >= idx ? "text-blue-600 dark:text-blue-400" : ""} transition-colors duration-300 flex items-center gap-1`}>
+                       <span className="hidden md:inline">{idx + 1}. </span>
+                       <span className={getStepIndex(currentStep) === idx ? "inline" : "hidden md:inline"}>{step.label}</span>
+                       <span className={getStepIndex(currentStep) !== idx ? "md:hidden" : "hidden"}>{idx + 1}</span>
                     </span>
                 ))}
             </div>
@@ -244,7 +247,7 @@ export const Onboarding: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 dark:border-slate-800 p-8 md:p-12 relative overflow-hidden"
+            className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 dark:border-slate-800 p-6 md:p-12 relative overflow-hidden"
         >
             {/* Decorative gradient blob */}
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -261,12 +264,12 @@ export const Onboarding: React.FC = () => {
                 >
                     {currentStep === 'validation' && (
                         <div className="space-y-8">
-                            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Rappel du projet</h2>
+                            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Vos informations</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <InputField label="Prénom *" name="firstName" value={formData.firstName} onChange={handleInputChange} placeholder="Jean" />
                                 <InputField label="Nom *" name="lastName" value={formData.lastName} onChange={handleInputChange} placeholder="Dupont" />
                             </div>
-                            <InputField label="Nom de l'entreprise *" name="companyName" value={formData.companyName} onChange={handleInputChange} placeholder="Ma Super Boîte" />
+                            <InputField label="Nom de l'entreprise *" name="companyName" value={formData.companyName} onChange={handleInputChange} placeholder="Mon entreprise" />
                         </div>
                     )}
 
@@ -274,7 +277,7 @@ export const Onboarding: React.FC = () => {
                         <div className="space-y-8">
                             <div>
                                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Identité Visuelle</h2>
-                                <p className="text-slate-500 dark:text-slate-400">Votre logo donnera le ton du design général.</p>
+                                <p className="text-slate-500 dark:text-slate-400">Déposer ici votre logo (si vous en avez déja un)</p>
                             </div>
                             
                             <div className="group border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-2xl p-12 text-center hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:border-blue-400 dark:hover:border-blue-500 transition-all cursor-pointer relative bg-slate-50/50 dark:bg-slate-900/50">
@@ -320,13 +323,18 @@ export const Onboarding: React.FC = () => {
                                 placeholder="Listez ici les prestations que vous souhaitez mettre en avant..."
                             />
 
-                            <div>
-                                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Vos Photos (Max 3)</label>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                             <div>
+                                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Vos Photos (Max 3)</label>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                                    Si vos photos sont trop lourdes, merci d'utiliser <a href="https://www.swisstransfer.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">SwissTransfer</a> et de coller le lien ci-dessous.
+                                </p>
+                                
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                                     {formData.photos.map((photo, i) => (
                                         <div key={i} className="relative group aspect-square bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm border border-slate-200 dark:border-slate-700">
                                             <img src={URL.createObjectURL(photo)} alt="Preview" className="w-full h-full object-cover transition-transform group-hover:scale-110 duration-500" />
                                             <button 
+                                                type="button"
                                                 onClick={() => removePhoto(i)}
                                                 className="absolute top-2 right-2 bg-red-500 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:bg-red-600 shadow-lg translate-y-2 group-hover:translate-y-0"
                                             >
@@ -347,6 +355,14 @@ export const Onboarding: React.FC = () => {
                                         </div>
                                     )}
                                 </div>
+
+                                <InputField 
+                                    label="Lien de transfert (SwissTransfer, WeTransfer, Drive...)" 
+                                    name="transferLink" 
+                                    value={formData.transferLink} 
+                                    onChange={handleInputChange} 
+                                    placeholder="https://www.swisstransfer.com/d/..." 
+                                />
                             </div>
                         </div>
                     )}
@@ -358,11 +374,11 @@ export const Onboarding: React.FC = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <InputField label="Téléphone" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="06..." />
-                                <InputField label="Email de contact" name="email" value={formData.email} onChange={handleInputChange} placeholder="contact@..." />
+                                <InputField label="Email de contact" name="email" value={formData.email} onChange={handleInputChange} placeholder="mon-entreprise@..." />
                             </div>
                             <InputField label="Adresse" name="address" value={formData.address} onChange={handleInputChange} placeholder="123 Rue de la République..." />
                             <InputField label="Horaires" name="hours" value={formData.hours} onChange={handleInputChange} placeholder="Lun-Ven : 9h-18h" />
-                            <InputField label="Réseaux sociaux" name="socials" value={formData.socials} onChange={handleInputChange} placeholder="Lien Facebook, LinkedIn, Instagram..." />
+                            <InputField label="Liens vers vos réseaux sociaux" name="socials" value={formData.socials} onChange={handleInputChange} placeholder="Lien Facebook, LinkedIn, Instagram..." />
                         </div>
                     )}
                 </motion.div>
@@ -381,11 +397,11 @@ export const Onboarding: React.FC = () => {
             )}
 
             {/* Actions */}
-            <div className={`mt-12 flex ${currentStep !== 'validation' ? 'justify-between' : 'justify-end'} pt-6 border-t border-slate-100 dark:border-slate-800/50`}>
+            <div className={`mt-10 md:mt-12 flex flex-col-reverse sm:flex-row gap-4 ${currentStep !== 'validation' ? 'sm:justify-between' : 'sm:justify-end'} pt-6 border-t border-slate-100 dark:border-slate-800/50`}>
                 {currentStep !== 'validation' && (
                     <button 
                         onClick={prevStep}
-                        className="px-6 py-4 flex items-center gap-2 text-slate-500 dark:text-slate-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                        className="px-6 py-4 flex items-center justify-center gap-2 text-slate-500 dark:text-slate-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                         <ChevronLeft size={20} />
                         Étape précédente
@@ -396,15 +412,15 @@ export const Onboarding: React.FC = () => {
                     <button 
                         onClick={handleSubmit} 
                         disabled={isSubmitting}
-                        className="px-8 py-4 bg-green-600 text-white font-bold rounded-full hover:bg-green-700 transition-all flex items-center gap-2 shadow-lg shadow-green-600/30 hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                     >
-                        {isSubmitting ? 'Envoi en cours...' : 'Valider mon dossier'} 
+                        {isSubmitting ? 'Envoi en cours...' : 'Valider le formulaire'} 
                         {!isSubmitting && <Check size={20} />}
                     </button>
                 ) : (
                     <button 
                         onClick={nextStep} 
-                        className="px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all flex items-center gap-2 shadow-lg shadow-blue-600/30 hover:-translate-y-1 active:scale-95"
+                        className="px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 hover:-translate-y-1 active:scale-95 text-center"
                     >
                         Étape suivante <ChevronRight size={20} />
                     </button>

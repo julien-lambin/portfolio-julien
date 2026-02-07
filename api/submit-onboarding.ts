@@ -12,7 +12,7 @@ export default async function handler(req: any, res: any) {
         clientName, firstName, lastName, companyName,
         logo, photos, logoName, photoNames, // Base64 strings and names
         presentation, services,
-        phone, email, address, hours, socials
+        phone, email, address, hours, socials, transferLink
     } = req.body;
 
     const attachments = [];
@@ -44,7 +44,7 @@ export default async function handler(req: any, res: any) {
       subject: `[ONBOARDING] Nouveau dossier : ${companyName}`,
       replyTo: email,
       html: `
-        <h1>Nouveau Dossier Client : ${companyName}</h1>
+        <h2>📁 Nouveau dossier d'Onboarding</h2>
         <p><strong>Client :</strong> ${firstName} ${lastName} (${clientName || 'N/A'})</p>
         
         <h2>1. Identité</h2>
@@ -59,6 +59,9 @@ export default async function handler(req: any, res: any) {
         <h2>3. Contact</h2>
         <ul>
             <li><strong>Email :</strong> ${email}</li>
+            <p><strong>Présentation :</strong> ${presentation || 'N/A'}</p>
+        <p><strong>Services :</strong> ${services || 'N/A'}</p>
+        <p><strong>Lien de transfert :</strong> ${transferLink ? `<a href="${transferLink}">${transferLink}</a>` : 'Aucun'}</p>
             <li><strong>Téléphone :</strong> ${phone}</li>
             <li><strong>Adresse :</strong> ${address}</li>
             <li><strong>Horaires :</strong> ${hours}</li>
