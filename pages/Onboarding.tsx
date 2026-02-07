@@ -215,7 +215,7 @@ export const Onboarding: React.FC = () => {
                 <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                     <Check size={40} />
                 </div>
-                <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">C'est tout bon !</h2>
+                <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">C'est parti !</h2>
                 <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
                     Merci {formData.firstName}. J'ai bien reçu vos éléments. Je commence l'intégration et je reviens vers vous très vite !
                 </p>
