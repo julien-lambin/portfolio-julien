@@ -12,15 +12,13 @@ export const Contact: React.FC = () => {
     setErrorMessage('');
 
     const formData = new FormData(e.currentTarget);
-    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
     
     // Convert FormData to a plain object for JSON submission
     const object = Object.fromEntries(formData);
-    object.access_key = accessKey;
     const json = JSON.stringify(object);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,12 +29,12 @@ export const Contact: React.FC = () => {
 
       const data = await response.json();
 
-      if (data.success) {
+      if (response.ok && data.success) {
         setStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus('error');
-        setErrorMessage(data.message || "Une erreur est survenue lors de l'envoi.");
+        setErrorMessage(data.error || "Une erreur est survenue lors de l'envoi.");
       }
     } catch (error) {
       console.error("Form submission error:", error);
