@@ -63,9 +63,12 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
                   <h3 className="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-3">1. Éditeur du site</h3>
                   <div className="text-slate-600 dark:text-slate-400 space-y-1">
                     <p className="font-bold">Julien Lambin</p>
-                    <p>Développeur Web Freelance</p>
+                    <p>Entrepreneur Individuel</p>
+                    <p>SIRET : 100 604 511 00012</p>
                     <p>E-mail : julienldev@gmail.com</p>
-                    <p>Lieu d'activité : Bapaume (62), France / Rayonnement Arras - Cambrai</p>
+                    <p>Tél : 07 50 41 59 11</p>
+                    <p>Lieu d'activité : Bapaume (62), France</p>
+                    <p className="pt-2 text-xs italic">Directeur de la publication : Julien Lambin</p>
                   </div>
                 </section>
 
@@ -105,7 +108,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
             {/* Footer */}
             <div className="px-8 py-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 text-center">
                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Dernière mise à jour : 04 Février 2026
+                  Dernière mise à jour : 09 Février 2026
                </p>
             </div>
 
