@@ -96,6 +96,16 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           
           <div className="flex items-center gap-3">
             <a 
+              href="https://www.linkedin.com/in/julien-lambin-7b1ab8216/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Mon profil LinkedIn"
+              className="p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-sm"
+            >
+                <Linkedin size={20} />
+            </a>
+
+            <a 
               href="https://github.com/julien-lambin" 
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +114,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             >
                 <Github size={20} />
             </a>
-
           </div>
         </motion.div>
       </motion.div>
