@@ -43,7 +43,7 @@ export default async function handler(req: any, res: any) {
     }[m] || m)) || '';
 
     const { data, error } = await resend.emails.send({
-      from: 'Onboarding <onboarding@resend.dev>',
+      from: 'Onboarding <contact@julienlambin.fr>',
       to: 'contact@julienlambin.fr',
       subject: `[ONBOARDING] Nouveau dossier : ${companyName}`,
       replyTo: email,
