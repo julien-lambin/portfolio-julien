@@ -65,7 +65,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose }) => {
                     <p className="font-bold">Julien Lambin</p>
                     <p>Entrepreneur Individuel</p>
                     <p>SIRET : 100 604 511 00012</p>
-                    <p>E-mail : julienldev@gmail.com</p>
+                    <p>E-mail : contact@julienlambin.fr</p>
                     <p>Tél : 07 50 41 59 11</p>
                     <p>Lieu d'activité : Bapaume (62), France</p>
                     <p className="pt-2 text-xs italic">Directeur de la publication : Julien Lambin</p>

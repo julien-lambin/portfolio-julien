@@ -81,7 +81,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                         <h4 className="font-semibold text-slate-900 dark:text-white">Email</h4>
-                        <a href="mailto:julienldev@gmail.com" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">julienldev@gmail.com</a>
+                        <a href="mailto:contact@julienlambin.fr" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">contact@julienlambin.fr</a>
                     </div>
                 </div>
 

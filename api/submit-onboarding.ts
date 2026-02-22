@@ -44,7 +44,7 @@ export default async function handler(req: any, res: any) {
 
     const { data, error } = await resend.emails.send({
       from: 'Onboarding <onboarding@resend.dev>',
-      to: 'julienldev@gmail.com',
+      to: 'contact@julienlambin.fr',
       subject: `[ONBOARDING] Nouveau dossier : ${companyName}`,
       replyTo: email,
       html: `
